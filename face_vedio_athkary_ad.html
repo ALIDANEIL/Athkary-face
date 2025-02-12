@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Rewarded Ad Example</title>
+    <script type="text/javascript">
+        // استبدال Placement ID الخاص بك
+        var placementId = "640056945348141_640060635347772"; // استبدلها بـ Placement ID الفعلي
+        
+        // تحميل الإعلان المكافئ
+        function loadRewardedAd() {
+            if (typeof FB !== "undefined" && FB.AudienceNetwork !== "undefined") {
+                var ad = new FB.AudienceNetwork.RewardedVideoAd();
+                ad.load(placementId, function() {
+                    console.log("Ad loaded successfully.");
+                    // عند عرض الإعلان، يحصل المستخدم على المكافأة
+                    ad.show(function() {
+                        // الرسالة التي ستظهر للمستخدم بعد مشاهدة الإعلان
+                        alert("شكرًا على دعمنا! 🌟");
+                    });
+                });
+            }
+        }
+
+        // تحميل الإعلان عند تحميل الصفحة
+        window.onload = loadRewardedAd;
+    </script>
+</head>
+<body>
+    <h1>Welcome to My App!</h1>
+    <p>Click the button to see a rewarded ad.</p>
+    <button onclick="loadRewardedAd()">Show Facebook Rewarded Ad</button>
+</body>
+</html>
